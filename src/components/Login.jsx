@@ -1,5 +1,10 @@
+import { useState } from "react";
 import Lottie from "react-lottie";
+
 import animationData from "../assets/home.json";
+
+import FormLogin from "./FormLogin";
+import FormRegister from "./FormRegister";
 
 const Login = () => {
 	const defaultOptions = {
@@ -10,9 +15,11 @@ const Login = () => {
 			preserveAspectRatio: "xMidYMid slice",
 		},
 	};
+	const [registerSection, setRegisterSection] = useState(false);
+
 	return (
-		<div className="row container p-4">
-			<div className="col-md-8">
+		<div className="row container-fluid p-4">
+			<div className="col-md-6">
 				<Lottie
 					options={defaultOptions}
 					height={400}
@@ -21,29 +28,17 @@ const Login = () => {
 			</div>
 			<div className="col-md-4">
 				<div className="mt-5 ms-5">
-					<h3>Iniciar Sesión</h3>
-					<form action="">
-						<div className="mb-3">
-							<label htmlFor="email">Correo Electrónico</label>
-							<input
-								type="text"
-								className="form-control"
-								placeholder="test@test.com"
-								id="email"
-								name="email"
-							/>
-						</div>
-						<div className="mb-3">
-							<label htmlFor="password">Contraseña</label>
-							<input
-								type="password"
-								className="form-control"
-								id="password"
-								name="password"
-								placeholder="**********"
-							/>
-						</div>
-					</form>
+					{registerSection ? (
+						<FormLogin
+							registerSection={registerSection}
+							setRegisterSection={setRegisterSection}
+						/>
+					) : (
+						<FormRegister
+							registerSection={registerSection}
+							setRegisterSection={setRegisterSection}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
