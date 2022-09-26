@@ -1,18 +1,29 @@
 import { Fragment } from "react";
 
+import { loginRequest } from "../controllers/authControllers";
+
 const FormLogin = ({ registerSection, setRegisterSection }) => {
+	const handleFormSubmit = (e) => {
+		e.preventDefault();
+		const email = e.target.email
+		const password = e.target.password
+		loginRequest(email, password);
+	};
+
 	return (
 		<Fragment>
 			<h3>Iniciar Sesión</h3>
-			<form>
+			<form onSubmit={handleFormSubmit}>
 				<div className="mb-3">
 					<label htmlFor="email">Correo Electrónico</label>
 					<input
-						type="text"
+						type="email"
 						className="form-control"
 						placeholder="test@test.com"
 						id="email"
 						name="email"
+						required
+						autoComplete="off"
 					/>
 				</div>
 				<div className="mb-3">
@@ -23,11 +34,13 @@ const FormLogin = ({ registerSection, setRegisterSection }) => {
 						id="password"
 						name="password"
 						placeholder="**********"
+						required
+						autoComplete="off"
 					/>
 				</div>
-				<div className="mb-3 text-center">
+				<div className="mb-3">
 					<button
-						className="btn btn-info me-5"
+						className="btn btn-info me-1"
 						type="submit">
 						Iniciar Sesión
 					</button>
@@ -35,7 +48,7 @@ const FormLogin = ({ registerSection, setRegisterSection }) => {
 						className="btn btn-warning"
 						type="submit"
 						onClick={() => setRegisterSection(!registerSection)}>
-						Registrarse
+						No tienes una cuenta? Registrate
 					</button>
 				</div>
 			</form>
