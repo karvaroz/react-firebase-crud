@@ -27,8 +27,9 @@ export const createNewUser = async (email, password) => {
 			const user = userCredential.user;
 			Toast.fire({
 				icon: "success",
-				title: "Usuario creado: " + user.username,
+				title: "Usuario creado: "
 			});
+			console.log(user)
 		})
 		.catch((error) => {
 			Toast.fire({

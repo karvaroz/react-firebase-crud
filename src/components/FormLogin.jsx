@@ -5,8 +5,8 @@ import { loginRequest } from "../controllers/authControllers";
 const FormLogin = ({ registerSection, setRegisterSection }) => {
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
-		const email = e.target.email
-		const password = e.target.password
+		const email = e.target.email.value;
+		const password = e.target.password.value;
 		loginRequest(email, password);
 	};
 
