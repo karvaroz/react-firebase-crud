@@ -50,9 +50,9 @@ const FormRegister = ({ registerSection, setRegisterSection }) => {
 						autoComplete="off"
 					/>
 				</div>
-				<div className="mb-3 d-flex text-center">
+				<div className="mb-3 d-flex">
 					<button
-						className="btn btn-warning me-1"
+						className="btn btn-warning mx-1"
 						type="submit">
 						Registrarse
 					</button>
@@ -60,7 +60,7 @@ const FormRegister = ({ registerSection, setRegisterSection }) => {
 						className="btn btn-info"
 						type="submit"
 						onClick={() => setRegisterSection(!registerSection)}>
-						Ya tengo una cuenta? Inicia Sesión
+						Tengo una cuenta? Inicia Sesión
 					</button>
 				</div>
 			</form>

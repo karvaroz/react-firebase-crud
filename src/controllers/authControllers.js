@@ -4,21 +4,9 @@ import {
 	signOut,
 } from "firebase/auth";
 
-import Swal from "sweetalert2";
-
 import { auth } from "../firebase/firebaseConfig";
 
-const Toast = Swal.mixin({
-	toast: true,
-	position: "top-end",
-	showConfirmButton: false,
-	timer: 3000,
-	timerProgressBar: true,
-	didOpen: (toast) => {
-		toast.addEventListener("mouseenter", Swal.stopTimer);
-		toast.addEventListener("mouseleave", Swal.resumeTimer);
-	},
-});
+import { Toast } from "../utils/toast";
 
 export const createNewUser = async (email, password) => {
 	await createUserWithEmailAndPassword(auth, email, password)
@@ -26,7 +14,7 @@ export const createNewUser = async (email, password) => {
 			const user = userCredential.user;
 			Toast.fire({
 				icon: "success",
-				title: "Usuario creado: ",
+				title: "Usuario creado",
 			});
 			console.log(user);
 		})
@@ -44,8 +32,9 @@ export const loginRequest = async (email, password) => {
 			const user = userCredential.user;
 			Toast.fire({
 				icon: "success",
-				title: "Bienvenid@ " + user.username,
+				title: "Bienvenid@ 😄" + user.email,
 			});
+			console.log(user)
 		})
 		.catch((error) => {
 			Toast.fire({
