@@ -7,7 +7,7 @@ const Navbar = ({ userInfo }) => {
 	};
 
 	return (
-		<nav className="navbar sticky-top">
+		<nav className="navbar">
 			<div className="container-fluid">
 				<NavLink
 					className="navbar-brand d-flex align-items-baseline"
