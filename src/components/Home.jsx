@@ -1,7 +1,11 @@
-const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+import Navbar from "./Navbar";
 
-export default Home
+const Home = ({ userInfo }) => {
+	return (
+		<div className="container-fluid">
+			<Navbar userInfo={userInfo} />
+		</div>
+	);
+};
+
+export default Home;
