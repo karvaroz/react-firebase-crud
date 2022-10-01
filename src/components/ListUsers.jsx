@@ -1,9 +1,19 @@
-import { deleteDocRequest } from "../controllers/crudControllers";
+import { useEffect, useState } from "react";
+import {
+	deleteDocRequest,
+	updateDocRequest,
+} from "../controllers/crudControllers";
 
 const ListUsers = ({ usersList }) => {
+	const [idToEdit, setIdToEdit] = useState("");
+
 	const handleDelete = (userId) => {
 		deleteDocRequest(userId);
 	};
+
+	useEffect(() => {
+		idToEdit !== "" && updateDocRequest(idToEdit);
+	}, [idToEdit]);
 
 	return (
 		<div className="col-md-8">
@@ -26,7 +36,9 @@ const ListUsers = ({ usersList }) => {
 								<p className="card-text text-black">
 									<b>Profesion: </b> {user.data.profession}
 								</p>
-								<button className="btn btn-success m-1">
+								<button
+									className="btn btn-success m-1"
+									onClick={() => setIdToEdit(user.id)}>
 									<ion-icon
 										name="create-sharp"
 										style={{ color: "white" }}></ion-icon>

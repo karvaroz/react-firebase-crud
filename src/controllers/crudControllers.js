@@ -4,8 +4,9 @@ import {
 	getDocs,
 	doc,
 	deleteDoc,
-	// getDoc,
-	// setDoc,
+	getDoc,
+	setDoc,
+	updateDoc,
 } from "firebase/firestore";
 
 import { db } from "../firebase/firebaseConfig";
@@ -56,6 +57,26 @@ export const deleteDocRequest = async (userId) => {
 		Toast.fire({
 			icon: "success",
 			title: "Registro Eliminado",
+		});
+	} catch (error) {
+		Toast.fire({
+			icon: "error",
+			title: "Error ‼ " + error.message,
+		});
+	}
+};
+
+export const updateDocRequest = async (userId) => {
+	try {
+		const userRef = doc(db, "users", userId);
+		await updateDoc(userRef, {
+			name: "Nombre",
+			age: 10,
+			profession: "admin",
+		});
+		Toast.fire({
+			icon: "success",
+			title: "Registro Actualizado",
 		});
 	} catch (error) {
 		Toast.fire({
